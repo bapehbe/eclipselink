@@ -42,6 +42,7 @@
 
     <!-- Default modules set and added to by all profiles -->
     <modules>
+        <module>../../plugins/org.eclipse.persistence.asm</module>
         <module>../../jpa/org.eclipse.persistence.jpa.jpql</module>
         <module>../../foundation/org.eclipse.persistence.core</module>
     </modules>

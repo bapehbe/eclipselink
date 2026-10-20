@@ -38,4 +38,8 @@ utils/eclipselink.utils.workbench/logs/
 test_*.properties
 .sonar
 /coverage-report/
-/jacoco.out
+/jacoco.out# local build outputs (CUBA 2.6.2.cuba27)
+/.gradle/
+/eclipselink.jar
+/eclipselink-src.zip
+target/
