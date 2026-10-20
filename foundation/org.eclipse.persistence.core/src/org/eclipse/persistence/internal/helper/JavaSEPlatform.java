@@ -117,6 +117,11 @@ public enum JavaSEPlatform implements Comparable<JavaSEPlatform> {
                 case 9: return v1_9;
                 default: return null;
             }
+        // CUBA: JDK 9+ use the "<major>.<minor>" scheme (e.g. "21.0.5"). This enum
+        // knows nothing newer than v1_9, so every JDK 9+ maps to v1_9 ("9 or later").
+        // Returning null here made CURRENT null and NPE'd every class that reads it.
+        } else if (major >= 9) {
+            return v1_9;
         } else {
             return null;
         }

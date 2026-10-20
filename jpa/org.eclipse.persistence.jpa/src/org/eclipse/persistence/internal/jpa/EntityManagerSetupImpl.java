@@ -2024,8 +2024,12 @@ public class EntityManagerSetupImpl implements MetadataRefreshListener {
             state = STATE_PREDEPLOY_FAILED;
             // cache this.persistenceException before slow logging
             PersistenceException persistenceEx = createPredeployFailedPersistenceException(ex);
-            session.log(SessionLog.FINEST, SessionLog.JPA, "predeploy_end", new Object[]{getPersistenceUnitInfo().getPersistenceUnitName(), session.getName(), state, factoryCount});
-            session = null;
+            // CUBA: session is null when predeploy fails before the session is created;
+            // logging through it threw a second NPE that hid the original exception.
+            if (session != null) {
+                session.log(SessionLog.FINEST, SessionLog.JPA, "predeploy_end", new Object[]{getPersistenceUnitInfo().getPersistenceUnitName(), session.getName(), state, factoryCount});
+                session = null;
+            }
             mode = null;
             throw persistenceEx;
         }
