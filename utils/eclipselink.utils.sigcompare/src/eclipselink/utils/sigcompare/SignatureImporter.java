@@ -59,7 +59,7 @@ public class SignatureImporter {
         protected ClassSignature sig = null;
 
         SignatureClassVisitor() {
-        	super(Opcodes.ASM5);
+        	super(Opcodes.ASM9);
         }
 
         public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
