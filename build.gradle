@@ -16,13 +16,7 @@ def uploadPassword = project.hasProperty('uploadPassword') ? project.uploadPassw
 
 repositories {
     mavenLocal()
-    maven {
-        credentials {
-            username repositoryUser
-            password repositoryPassword
-        }
-        url "${repositoryUrl}/groups/work"
-    }
+    mavenCentral()
 }
 
 apply plugin: 'maven'
